@@ -17,7 +17,7 @@
 <body>
 <div id="container">
 <!--Starting Page -->
-<div id="gameContent">
+
     <div id=headline>
         <h1>Totally Trivial Trivia</h1>
     </div>
@@ -33,10 +33,11 @@
     <!-- Questions Screen-->
     <div class="screen" id="questionScreen" style="display:none">
             <h3 id="question"></h3>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+            <button class="possibleAnswers"><span id="ans4">X</span></button>
+            <button class="possibleAnswers"><span id="ans3">X</span></button>
+            <button class="possibleAnswers"><span id="ans2">X</span></button>
+            <button class="possibleAnswers"><span id="ans1">X</span></button>          
+                      
     </div>
     
     <!-- Outcome Screen-->
@@ -44,8 +45,8 @@
         <h4><scan id="outcome"></scan></h4>
         <h5 id="ifWrong">The correct answer was:</h5>
         <h5><scan id="rightAnswer"></scan></h5>
-        <object><scan id="images"></scan></object>
-        <!-- <a><img id="images" src="assets/images/atacamaDesert.jpg"></a> -->
+        <!-- <object><scan id="images"></scan></object> -->
+         <a><img id="images" src="assets/images/atacamaDesert.jpg"></a>
     </div>
 
     <!-- Score Screen -->
@@ -57,7 +58,7 @@
         <button type="button" id ="restart" >Press to Restart</button>
     </div>
 
-    </div>
+
 </div>                  
 
 <script src="assets/javascript/app.js"></script>
