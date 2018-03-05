@@ -46,7 +46,7 @@ $("#start").click (function run() {
         answers.push(wrongAnswers[h]);    
     };
 
-    // Shuffle Possible Answers       
+    // Shuffle Possible Answers / create buttons / append to screen      
     for (var i = answers.length - 1; i >= 0; i--) {        
         // pick a number between 0 and 3, next run 0 and 2, ect
         var answerChosen = Math.floor(Math.random() * (i + 1)); 
@@ -59,45 +59,43 @@ $("#start").click (function run() {
         answerButtons = $("<button>" + (answersShuffled) + "</button>" +"<br />")
         answerButtons.addClass("guess").val([answersShuffled]);
         answerButtons.css({
-                "background": "transparent",  "margin-bottom": "0px",
-                "font-size": "26px", "font-family": "'Playfair Display', serif"
-            });
-            $("#answerButtons").append(answerButtons);       
-        };
+            "background": "transparent",  "margin-bottom": "0px",
+            "font-size": "26px", "font-family": "'Playfair Display', serif"
+        });
+        $("#answerButtons").append(answerButtons);
+    };
 
-});        
-
-// activates dynamically created buttons    
-$(document).on("click", "button.guess", function checkAnswers() {
-    clearInterval(interval);
-    yourGuess = (this.value);
-    if (yourGuess === rightAnswers[qAndaCounter]) {
-        correctCounter++;
+    // activates dynamically created buttons and runs checks answers  
+    $(document).on("click", "button.guess", function checkAnswers() {
+        clearInterval(interval);
         intervalResults = setInterval(increment, 1000);
         $("#questionScreen").hide();
         $("#outcomeScreen").show();
-        $("#outcome").text("You Got it right!!");
-        $("#rightAnswer").text(rightAnswers[qAndaCounter])
-    } else {
-        incorrectCounter++;
-        intervalResults = setInterval(decrement, 1000);
-        $("#questionScreen").hide();
-        $("#outcomeScreen").show();
-        $("#outcome").text("You got it Wrong");
-        $("#ifWrong").text("The correct answer was:");
-        $("#rightAnswer").text(rightAnswers[qAndaCounter])
-    }               
-});            
+        // $("#images").prepend("<img src=""+images[0]+"">"images[0]">");
+        // $('').append("<div><img src='"+el[0]+"'>"+el[1]+"</div>"); 
+        yourGuess = (this.value);
+        if (yourGuess === rightAnswers[qAndaCounter]) {
+            correctCounter++;
+            $("#outcome").text("You Got it right!!");
+            $("#rightAnswer").text(rightAnswers[qAndaCounter])
+        } else {
+            incorrectCounter++;
+            $("#outcome").text("You got it Wrong");
+            $("#ifWrong").text("The correct answer was:");
+            $("#rightAnswer").text(rightAnswers[qAndaCounter])
+        }               
+    });
 
+// times outcomes shown  & what to do if on-click outcome 
 function increment() {
     timeToShowOutcome--
     if ((timeToShowOutcome === 0) && (qAndaCounter < triviaQuestions.length)) {
-        clearInterval(itervalResults)
+        clearInterval(intervalResults)
         $("#questionScreen").show();
         $("#outcomeScreen").hide();
-        run();
+//        nextRound();
     } 
-    else if (timeToShowOutcome === 0) {
+    if ((timeToShowOutcome === 0) && (qAndaCounter = triviaQuestions.length)) {
         clearInterval(intervalResults)
         $("#timerScreen").hide();
         $("#questionScreen").hide();
@@ -106,12 +104,12 @@ function increment() {
     }
 
 }
+
 function decrement() {
     timeToPlay--
     $("#time").text(timeToPlay);
     if (timeToPlay === 0) {
         clearInterval(interval);
-        qAndaCounter++;
         unansweredCounter++;
         $("#outcome").text("You ran out of time!");
         $("#ifWrong").text("The correct answer was:");
@@ -119,21 +117,21 @@ function decrement() {
         // $("#images").prepend("<img src=""+images[0]+"">"images[0]">");
         // $('').append("<div><img src='"+el[0]+"'>"+el[1]+"</div>");             
         $("#questionScreen").hide();
-        $("#outcomeScreen").show();        
-    }
-}    
+        $("#outcomeScreen").show();
+        intervalResults = setInterval(increment, 1000);        
+    };
+};    
 
-console.log(qAndaCounter);
-console.log(correctCounter);
-console.log(incorrectCounter);
-console.log(unansweredCounter);
-
-
-function stopPlay() {
-    clearInterval(intervalId);
-}
+});
+ 
+// function nextRound() {
+//     if 
+//     clearInterval(intervalId);
+//     console.log(qAndaCounter);
+//     console.log(correctCounter);
+//     console.log(incorrectCounter);
+//     console.log(unansweredCounter);
+//     debugger
+// }
       
 });
-
-
-
