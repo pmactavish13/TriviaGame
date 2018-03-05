@@ -65,7 +65,7 @@ $("#start").click (function run() {
         $("#answerButtons").append(answerButtons);
     };
 
-    // activates dynamically created buttons and runs checks answers  
+    // activates dynamically created buttons, stops game timer and checks answers  
     $(document).on("click", "button.guess", function checkAnswers() {
         clearInterval(interval);
         intervalResults = setInterval(increment, 1000);
@@ -86,52 +86,67 @@ $("#start").click (function run() {
         }               
     });
 
-// times outcomes shown  & what to do if on-click outcome 
-function increment() {
-    timeToShowOutcome--
-    if ((timeToShowOutcome === 0) && (qAndaCounter < triviaQuestions.length)) {
-        clearInterval(intervalResults)
-        $("#questionScreen").show();
-        $("#outcomeScreen").hide();
-//        nextRound();
-    } 
+    // play timer & what to do in no answer given
+    function decrement() {
+        timeToPlay--
+        $("#time").text(timeToPlay);
+        if (timeToPlay === 0) {
+            clearInterval(interval);
+            unansweredCounter++;
+            $("#outcome").text("You ran out of time!");
+            $("#ifWrong").text("The correct answer was:");
+            $("#rightAnswer").text(rightAnswers[qAndaCounter])
+            // $("#images").prepend("<img src=""+images[0]+"">"images[0]">");
+            // $('').append("<div><img src='"+el[0]+"'>"+el[1]+"</div>");             
+            $("#questionScreen").hide();
+            $("#outcomeScreen").show();
+            intervalResults = setInterval(increment, 1000);        
+        };
+    };
+
+    // times outcomes shown  & start next round
+    function increment() {
+        timeToShowOutcome--
+        if (timeToShowOutcome === 0)  {
+            clearInterval(intervalResults)
+            nextRound();
+        } 
+    }
+});
+ 
+function nextRound() {
+    console.log("HI");
+    console.log(intervalResults)
+    console.log(qAndaCounter)
+    console.log(triviaQuestions.length)
     if ((timeToShowOutcome === 0) && (qAndaCounter = triviaQuestions.length)) {
+         timeToShowOutcome
         clearInterval(intervalResults)
         $("#timerScreen").hide();
         $("#questionScreen").hide();
         $("#outcomeScreen").hide();
         $("#scoreScreen").show();
-    }
-
+        $("#correctOutcome").text[correctOutcomeCounter];
+        $("#incorrectOutcome").text[correctOutcomeCounter];
+        $("#unAnsweredOutcome").text[correctOutcomeCounter];
+    } 
+    if ((timeToShowOutcome === 0) && (qAndaCounter < triviaQuestions.length)) {
+        clearInterval(intervalResults)
+        qAndaCounter++;
+        wrongAnswers+3;
+        $("#outcomeScreen").hide();
+        $("#questionScreen").show();
+        var timeToPlay = 10;
+        var interval;
+        var timeToShowOutcome = 5;
+        var intervalResults;
+        console.log(qAndaCounter);
+        console.log(correctCounter);
+        console.log(incorrectCounter);
+        console.log(unansweredCounter);
+        start();
+    }         
 }
-
-function decrement() {
-    timeToPlay--
-    $("#time").text(timeToPlay);
-    if (timeToPlay === 0) {
-        clearInterval(interval);
-        unansweredCounter++;
-        $("#outcome").text("You ran out of time!");
-        $("#ifWrong").text("The correct answer was:");
-        $("#rightAnswer").text(rightAnswers[qAndaCounter])
-        // $("#images").prepend("<img src=""+images[0]+"">"images[0]">");
-        // $('').append("<div><img src='"+el[0]+"'>"+el[1]+"</div>");             
-        $("#questionScreen").hide();
-        $("#outcomeScreen").show();
-        intervalResults = setInterval(increment, 1000);        
-    };
-};    
-
-});
- 
-// function nextRound() {
-//     if 
-//     clearInterval(intervalId);
-//     console.log(qAndaCounter);
-//     console.log(correctCounter);
-//     console.log(incorrectCounter);
-//     console.log(unansweredCounter);
+console.log(qAndaCounter);
 //     debugger
-// }
-      
 });
