@@ -36,37 +36,23 @@ h1 {
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 28px;
     text-align: center;
     padding-top: 5px; 
 }
 
-h3, h4 {
-    font-size: 28px;
+h3 {
+    font-size: 30px;
     text-align: center;   
     font-family: 'Playfair Display', serif;
     margin-bottom: 15px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
-h5 {
+h4 {
     font-size: 22px;
     text-align: center;
     font-family: 'Playfair Display', serif;   
-}
-
-.possibleAnswers {
-    margin-top: 20px;
-    margin-bottom: -15px;
-    background: transparent;
-    font-size: 26px;
-    width: 600px;
-    text-align: center;   
-    font-family: 'Playfair Display', serif;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 #resultsList {
@@ -86,6 +72,10 @@ h5 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#answerButtons {
+    text-align: center;
 }
 
 #restart {

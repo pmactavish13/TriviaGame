@@ -33,28 +33,24 @@
     <!-- Questions Screen-->
     <div class="screen" id="questionScreen" style="display:none">
             <h3 id="question"></h3>
-            <button class="possibleAnswers"><span id="ans4">X</span></button>
-            <button class="possibleAnswers"><span id="ans3">X</span></button>
-            <button class="possibleAnswers"><span id="ans2">X</span></button>
-            <button class="possibleAnswers"><span id="ans1">X</span></button>          
-                      
+            <div id="answerButtons"></div>
     </div>
     
     <!-- Outcome Screen-->
     <div class="screen" id="outcomeScreen" style="display:none">
-        <h4><scan id="outcome"></scan></h4>
-        <h5 id="ifWrong">The correct answer was:</h5>
-        <h5><scan id="rightAnswer"></scan></h5>
+        <h3><scan id="outcome"></scan></h3>
+        <h4 id="ifWrong"></h4>
+        <h4><scan id="rightAnswer"></scan></h4>
         <!-- <object><scan id="images"></scan></object> -->
          <a><img id="images" src="assets/images/atacamaDesert.jpg"></a>
     </div>
 
     <!-- Score Screen -->
     <div class="screen" id="scoreScreen" style="display:none">
-        <h4>All done!!  Here are your results:</h4>
-        <h5 id="resultsList"> Correct Answers: <scan id="correctOutcome"></scan></h5>
-        <h5>Incorrect Answers: <scan id="incorrectOutcome"></scan></h5>
-        <h5>Unanswered: <scan id="unansweredOutcome"></scan></h5>
+        <h3>All done!!  Here are your results:</h3>
+        <h4 id="resultsList"> Correct Answers: <scan id="correctOutcome"></scan></h4>
+        <h4>Incorrect Answers: <scan id="incorrectOutcome"></scan></h4>
+        <h4>Unanswered: <scan id="unansweredOutcome"></scan></h4>
         <button type="button" id ="restart" >Press to Restart</button>
     </div>
 
