@@ -17,7 +17,7 @@ var images = ["assets/images/atacamaDesert.jpg", "assets/images/atlantaAirport.j
 var wrongAnswerCounter = 0;
 var timeToPlay = 10;
 var interval;
-var timeToShowOutcome = 5;
+var timeToShowOutcome = 4;
 var intervalResults;
 var yourGuess;
 var answers = [];
@@ -29,30 +29,29 @@ $("#outcomeScreen").hide();
 $("#scoreScreen").hide();
 
 $(document).ready(function () {
+
     // change screen section to question screen 
     $("#start").click(function run() {
         // change screen section to question screen
         $("#startScreen").hide();
-        $("#timerScreen").show();
         $("#questionScreen").show(); 
         postQuestions();
     });
-console.log(timeToPlay)
-console.log(wrongAnswerCounter)
-    // activates dynamically created buttons
-    // stops game timer and checks answers 
+
+    // posts questions on screen
     function postQuestions () {
-        
+        // resets timers and erases answer buttons
+        timeToPlay = 10;
+        timeToShowOutcome = 4;
+        $("#answerButtons").empty();
         // set timer interval to 1 second   
         interval = setInterval(decrement, 1000);
+        $("#timerScreen").show();
         
-        answersShuffled = "";
-        $("#answerButtons").empty();
         console.log(triviaQuestions[qAndaCounter]);
 
-        // changes question on screen 
+        // initial then new question on screen 
         $("#question").text(triviaQuestions[qAndaCounter]);     
-
         // adds next rightAnswer from rightAnswer array into answers array
         answers.push(rightAnswers[qAndaCounter]);
         // adds next 3 wrongAnswers from wrongAnswer array into answers array
@@ -60,7 +59,8 @@ console.log(wrongAnswerCounter)
             answers.push(wrongAnswers[h]);
         };
 
-        // Shuffle Possible Answers / create buttons / append to screen      
+        // Shuffle Possible Answers / create buttons / append to screen 
+            // Shuffle Possible Answers    
         for (var i = answers.length - 1; i >= 0; i--) {
             // pick a number between 0 and 3, next run 0 and 2, ect
             var answerChosen = Math.floor(Math.random() * (i + 1));
@@ -71,17 +71,18 @@ console.log(wrongAnswerCounter)
 
             // removes answerChosen from answers array (index to start removing, # of indices to remove)
             answers.splice([answerChosen], 1);
-            // create buttons with answers printed on them and = to the value
+            // create buttons with answers printed on them and = to the value of answer
             answerButtons = $("<button>" + (answersShuffled) + "</button>" + "<br />");
             answerButtons.addClass("guess").val([answersShuffled]);
             answerButtons.css({
-                "background": "transparent", "margin-bottom": "0px",
+                "background": "transparent", "margin-top": "10px",
                 "font-size": "26px", "font-family": "'Playfair Display', serif"
             });   
             $("#answerButtons").append(answerButtons);
         };    
     } 
 
+    // records answer clicked and checks accuracy
     $(document).on("click", "button.guess", function checkAnswers() {
         clearInterval(interval);
         intervalResults = setInterval(increment, 1000);
@@ -93,13 +94,13 @@ console.log(wrongAnswerCounter)
         var picture = $("<img>");
         picture.css ({
             "background-image": "url('" + (images[qAndaCounter]) + "')",
-            "background-size": "100%", "width": "290px", "height": "180px", "margin-top": "8px",
-            "border": "solid", "border-color": "#0c0d57", "border-width": "6", "border-radius": "8px",
+            "background-size": "cover", "background-repeat": "no-repeat", "width": "290px", "height": "180px",
+            "margin-top": "8px", "border": "solid", "border-color": "#0c0d57", "border-width": "6", "border-radius": "8px",
             "margin-top": "85px", "position": "relative", "top":"50%", "left": "50%",
             "transform": "translate(-50%, -50%)"
         });
         $("#images").html(picture);
-
+        // add text t0 basic outcome screen
         yourGuess = (this.value);
         if (yourGuess === rightAnswers[qAndaCounter]) {
             $("#outcome").text("You Got it right!!");
@@ -115,14 +116,17 @@ console.log(wrongAnswerCounter)
 
     // play timer & what to do in no answer given
     function decrement() {
+        // countdown timer
         timeToPlay--
         $("#time").text(timeToPlay);
+        // if no answer 
         if (timeToPlay === 0) {
             clearInterval(interval);
+            // set show outome screen for...
             intervalResults = setInterval(increment, 1000);
             increment ();
             unansweredCounter++;
-            qAndaCounter++
+            // text no answer outcome on screen
             $("#outcome").text("You ran out of time!");
             $("#ifWrong").text("The correct answer was:");
             $("#rightAnswer").text(rightAnswers[qAndaCounter])
@@ -135,7 +139,8 @@ console.log(wrongAnswerCounter)
                 "margin-top": "85px", "position": "relative", "top":"50%", "left": "50%",
                 "transform": "translate(-50%, -50%)"
             });
-            $("#images").html(picture);               
+            $("#images").html(picture); 
+            // show outcome screen              
             $("#questionScreen").hide();
             $("#outcomeScreen").show(); 
         };
@@ -153,29 +158,33 @@ console.log(wrongAnswerCounter)
     }
 
     function whatToDoNext() {
-        if (qAndaCounter > triviaQuestions.length) {
+        if (qAndaCounter === triviaQuestions.length) {
             $("#timerScreen").hide();
-            $("#questionScreen").hide();
             $("#outcomeScreen").hide();
             $("#scoreScreen").show();
-            $("#correctOutcome").text[correctCounter];
-            $("#incorrectOutcome").text[incorrectCounter];
-            $("#unansweredOutcome").text[unansweredCounter];
+            $("#correctOutcome").text(correctCounter);
+            $("#incorrectOutcome").text(incorrectCounter);
+            $("#unansweredOutcome").text(unansweredCounter);
         }
         if (qAndaCounter < triviaQuestions.length) {
-            wrongAnswerCounter = (parseInt(qAndaCounter)) * 3;
-            console.log(typeof(qAndaCounter))
+            wrongAnswerCounter = (qAndaCounter) * 3;
             $("#outcomeScreen").hide();
             $("#questionScreen").show();
             console.log(wrongAnswerCounter);
-            timeToPlay = 10;
-            timeToShowOutcome = 5;
-            intervalResults;
-            yourGuess;
-            interval;
-            answers = [];
             postQuestions ();
         } 
-    }       
+    }
+
+    //reset game counter and reatart game
+    $("#restart").click(function restart() {
+        clearInterval(interval);
+        qAndaCounter = 0
+        correctCounter = 0;
+        incorrectCounter = 0;
+        unansweredCounter = 0;
+        $("#questionScreen").show();
+        $("#scoreScreen").hide();
+        postQuestions ()
+    });
 });
 
