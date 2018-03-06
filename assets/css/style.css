@@ -55,13 +55,21 @@ h4 {
     font-family: 'Playfair Display', serif;   
 }
 
+h5 {
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 50px;
+
+}
+
 #resultsList {
     margin-top: 22px;
 }
 
 #start {
-    height: 100px;
-    width: 250px;
+    height: 120px;
+    width: 350px;
     text-align: center;
     font-size: 30px;
     background-color: rgba(244, 251, 197, 0.83);
@@ -79,21 +87,21 @@ h4 {
 }
 
 #restart {
-    height: 70px;
-    width: 150px;
+    height: 120px;
+    width: 250px;
     text-align: center;
     font-size: 20px;
     background-color: rgba(244, 251, 197, 0.83);
     border: solid #0c0d57 8px;
     border-radius: 15px;
     position: absolute;
-    margin-top: 115px;
+    margin-top: 160px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-#images { 
+/* #imagesFrame { 
     width: 280px;
     height: 170px;
     border: solid #0c0d57 4px;
@@ -102,6 +110,7 @@ h4 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+    border-radius: 8px;
+ } */
 
 
