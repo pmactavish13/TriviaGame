@@ -75,7 +75,7 @@ $(document).ready(function () {
             answerButtons = $("<button>" + (answersShuffled) + "</button>" + "<br />");
             answerButtons.addClass("guess").val([answersShuffled]);
             answerButtons.css({
-                "background": "transparent", "margin-top": "10px",
+                "background": "transparent", "margin-top": "8px",
                 "font-size": "26px", "font-family": "'Playfair Display', serif"
             });   
             $("#answerButtons").append(answerButtons);
