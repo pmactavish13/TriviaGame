@@ -23,7 +23,7 @@ body {
     transform: translate(-50%, -50%);
     height: 80%;
     width: 80%;
-    background-color: rgba(244, 251, 197, 0.83);
+    background-color: rgba(244, 251, 197, 0.73);
     border: solid #0c0d57 8px;
     border-radius: 12px;
 }
@@ -45,7 +45,7 @@ h2 {
 h3 {
     font-size: 26px;
     text-align: center; 
-    padding-top: 10px;
+    padding-top: 5px;
     padding-bottom: -5px;  
 }
 
@@ -58,7 +58,7 @@ h4 {
 h5 {
     font-size: 22px;
     text-align: center;
-    padding: 5px;    
+    padding: 3px;    
 }
 
 #resultsList {
@@ -86,8 +86,8 @@ h5 {
 #answerButtons {
     text-align: center;  
 }
-#restart:active{
-    border-color:#0c0d57;
+.btn-default:active {
+    border-color:#0c0d57 3px solid
 }
 
 #restart {
