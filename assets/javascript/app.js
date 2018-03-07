@@ -11,7 +11,6 @@ $(document).ready(function () {
         "What is the worlds most venomous snake?", "What is the hottest pepper on the Scoville scale?",
         "How big is the Amazon Rainforrest?","Which one is not considered a Wonder of the Modern World",
         "What is the approximate circumferance of the Earth?"];
-
     var rightAnswers = ["Atacama Desert, Chile", "Hartsfield-Jackson International, Atlanta, GA", "Singapore",
          "Nile", "Russia", "Inland Taipan", "Carolina Reaper", "2.214 Million Square Miles", "Tikal, Guatamala",
          "24,901 miles or 40,075 kilometers"];
@@ -38,8 +37,6 @@ $(document).ready(function () {
     $("#outcomeScreen").hide();
     $("#scoreScreen").hide();
 
-
-
     // change screen section to question screen 
     $("#start").click(function run() {
         // change screen section to question screen
@@ -57,7 +54,7 @@ $(document).ready(function () {
         // set timer interval to 1 second   
         interval = setInterval(decrement, 1000);
         $("#timerScreen").show();
-
+        decrement();
         console.log(triviaQuestions[qAndaCounter]);
 
         // initial then new question on screen 
@@ -111,7 +108,7 @@ $(document).ready(function () {
             "transform": "translate(-50%, -50%)"
         });
         $("#images").html(picture);
-        // add text t0 basic outcome screen
+        // add text to basic outcome screen
         yourGuess = (this.value);
         if (yourGuess === rightAnswers[qAndaCounter]) {
             $("#outcome").text("You Got it right!!");
@@ -156,7 +153,6 @@ $(document).ready(function () {
             $("#outcomeScreen").show();
         };
     };
-
 
     // show outcomeScreen for 5 sec. - return to questions or score screen
     function increment() {
