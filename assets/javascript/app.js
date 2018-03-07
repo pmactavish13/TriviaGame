@@ -7,17 +7,25 @@ $(document).ready(function () {
     var triviaQuestions = ["Where is the driest place on Earth?",
         "Which is the busiest airport in the World?",
         "Worldwide, what is the most expensive city to live in?",
-        "What is the longest river in the World?"];
+        "What is the longest river in the World?", "What country has the highest literacy rate?",
+        "What is the worlds most venomous snake?", "What is the hottest pepper on the Scoville scale?",
+        "How big is the Amazon Rainforrest?","Which one is not considered a Wonder of the Modern World",
+        "What is the approximate circumferance of the Earth?"];
 
-    var rightAnswers = ["Atacama Desert, Chile", "Hartsfield-Jackson International, Atlanta, GA", "Singapore", "Nile"];
-
+    var rightAnswers = ["Atacama Desert, Chile", "Hartsfield-Jackson International, Atlanta, GA", "Singapore",
+         "Nile", "Russia", "Inland Taipan", "Carolina Reaper", "2.214 Million Square Miles", "Tikal, Guatamala",
+         "24,901 miles or 40,075 kilometers"];
     var wrongAnswers = ["Sahara Desert, North Africa", "Gobi Desert, China and Mongolia", "Death Valley, California and Nevada, U.S.A.",
         "Heathrow Airport, London, England", "Charles de Gaulle Airport, Paris, France", "Narita International Airport, Tokyo, Japan",
-        "Tokyo", "New York City", "London",
-        "Amazon", "Congo", "Yangtze"];
-    var images = ["assets/images/atacamaDesert.jpg", "assets/images/atlantaAirport.jpeg", "assets/images/singapore.jpg", "assets/images/nile.jpg"];
-    var wrongAnswerCounter = 0;
+        "Tokyo", "New York City", "London","Amazon", "Congo", "Yangtze", "Finland", "Japan", "Canada",
+        "Death Adder", "Black Mamba", "Blue Krait", "7 Pot Douglah", "Naga Viper", "Red Savina Habanero", "4.86 Million Square Miles",
+        "1.93 Million Square Miles", "5.12 Million Square Miles", "Machu Picchu, Peru", "Christ the Redeemer, Brazil", "Petra, Jordan",
+        "22,866 miles or 36,800 kilometers", "25,712 miles or 41,380 kilometers", "23,513 miles or 37,840 kilometers" ];
+    var images = ["assets/images/atacamaDesert.jpg", "assets/images/atlantaAirport.jpeg", "assets/images/singapore.jpg", "assets/images/nile.jpg",
+        "assets/images/redSquare.jpg", "assets/images/inlandTaipan.jpg", "assets/images/carolinaReaper.jpg", "assets/images/amazonBasin.png",
+        "assets/images/tikalGuatamala.jpg", "assets/images/earth.jpg"];
     var timeToPlay = 10;
+    var wrongAnswerCounter = 0;             
     var interval;
     var timeToShowOutcome = 4;
     var intervalResults;

@@ -86,9 +86,6 @@ h5 {
 #answerButtons {
     text-align: center;  
 }
-.btn-default:active {
-    border-color:#0c0d57 3px solid
-}
 
 #restart {
     height: 100px;
